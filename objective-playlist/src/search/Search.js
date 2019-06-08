@@ -20,7 +20,7 @@ class Search extends React.Component {
     e.preventDefault()
     const BASE_URL = 'https://api.spotify.com/v1/search?';
     const FETCH_URL = BASE_URL + 'q=' + this.state.query + '&type=track';
-    var accessToken = 'BQAUCOWsji0__2Po9MIPOBnfbB-h3kRQz7ngQcCmKiJp0IwS2d7BO64ZReZR-Nn0EI_1XbI8Nv7VmEbyDUz0W6esrXmk88IouuT9yDsQLIfyg5c85wbcwPBCplCyGFZu3tA_Rga-p7uOwAEPHj8jSw7TnWhL6KaYzbf0&refresh_token=AQC26Vm2TR24PXVVvUuIqxlb6sdMR3qsdk9WFBRjs7JERt22-A9oWKtuT2xkWVPixnb4VzcoA-wA-W0XVyy2rVHBR_rsIPKppNNFVW1u-yblK8hs2xTge98ccRgVOxiufoapag'
+    var accessToken = 'BQBbH5WyYRopGo_zgZDfaOWeneY9F7qlJVXlw1rPELF19id5mhnjI9JelgUf7qN8SaEw5cOYcbSLsIPzW4Q5YDvLaEVKhf2iNardDJ1WG3ywwDmgeSJtEuTPXamAueMVuIeXuIAkQgzFEpVAaFTO7kMPpoGNn1h9hB1e&refresh_token=AQD_XmtP-PEFvHWNwQXKnu9q7UA8DAPf9hnMZM0YfHlBHVkhaCXXvYTXUk2IQd2vAlYePm8W5GYswlbmIX8zwp0_3GgK0Ikm3tIMSQVEtuGftsCFbHmex3STeQQJisuIsrtF9A'
 
     var myOptions = {
       method: 'GET',
@@ -52,7 +52,7 @@ class Search extends React.Component {
           console.log(this.state)
           this.post(tracksAnalyzed)
         })
-      }, 3000)
+      }, 10000)
     })
   }
 
