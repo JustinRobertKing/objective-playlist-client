@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={ye} style={{width: 200, height: 'auto'}} />
+        <img src={ye} alt="ye" style={{width: 200, height: 'auto'}} />
         
       </header>
       <Search />
