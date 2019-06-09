@@ -20,7 +20,7 @@ class Search extends React.Component {
     e.preventDefault()
     const BASE_URL = 'https://api.spotify.com/v1/search?';
     const FETCH_URL = BASE_URL + 'q=' + this.state.query + '&type=track';
-    var accessToken = 'BQBbH5WyYRopGo_zgZDfaOWeneY9F7qlJVXlw1rPELF19id5mhnjI9JelgUf7qN8SaEw5cOYcbSLsIPzW4Q5YDvLaEVKhf2iNardDJ1WG3ywwDmgeSJtEuTPXamAueMVuIeXuIAkQgzFEpVAaFTO7kMPpoGNn1h9hB1e&refresh_token=AQD_XmtP-PEFvHWNwQXKnu9q7UA8DAPf9hnMZM0YfHlBHVkhaCXXvYTXUk2IQd2vAlYePm8W5GYswlbmIX8zwp0_3GgK0Ikm3tIMSQVEtuGftsCFbHmex3STeQQJisuIsrtF9A'
+    var accessToken = 'BQAvEVzf6UkPnhjWO7c9V9lE77tsq4h7LWMmSzyyBEi7rF3wQpdCe5Cooqe8UgRPmqrgbVdyfbu-t4vDAdkpGy2klfW_KyB_E_f7vcK3bKVcw7oXNd6BeRx83KxKbuUUcbekzzN4WtK4GSEMz1A6Mt2q283GO-1RFVPz&refresh_token=AQAsvFo8wL25jkrLZobUzHtVThLlh4maEwq5ndTELeI-kld5PY-5yoHhO-Qzrz4EyD-SnDBq14hIvi6gyuTgmXYWPExJ9cHWzsHQwh4YHkWiayndDmwcrcCThwS35I2xlPzGpQ'
 
     var myOptions = {
       method: 'GET',
@@ -34,15 +34,16 @@ class Search extends React.Component {
     fetch(FETCH_URL, myOptions)
     .then(response => response.json())
     .then(json => {
+      console.log('FUCK ME', json)
       let tracks = json.tracks.items.map((t, i) => {
-        return([t.artists[0].name, t.name, t.id])
+        return([t.id, t.album.images[2].url, t.artists[0].name, t.name, t.uri])
       })
       let tracksAnalyzed = []
       tracks.forEach((t, i) => {
-        fetch('https://api.spotify.com/v1/audio-analysis/' + t[2], myOptions)
+        fetch('https://api.spotify.com/v1/audio-analysis/' + t[0], myOptions)
         .then(response => response.json())
         .then(json => {
-          tracksAnalyzed.push([t[0], t[1], json.track])
+          tracksAnalyzed.push([...t, json.track])
         })
       })
       console.log('duhjson: ', tracksAnalyzed)
