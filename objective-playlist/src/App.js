@@ -1,18 +1,50 @@
 import React from 'react';
 import ye from './spotify.png'
 import './App.css';
+import queryString from 'query-string'
 import Search from './search/Search'
+import SearchDatabase from './search/SearchDatabase'
+import Playlist from './results/Playlist'
+import axios from 'axios'
+import SERVER_URL from './constants/server'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ye} alt="ye" style={{width: 200, height: 'auto'}} />
-        
-      </header>
-      <Search />
-    </div>
-  );
+class App extends React.Component {
+	state = {
+		allTracks: '',
+		searchResults: '',
+	}
+
+	componentDidMount() {
+		axios.get(`${SERVER_URL}/tracks`)
+		.then(tracks => {
+			this.setState({ allTracks: tracks.data }, () => {
+				console.log(this.state)
+			})
+		})
+	}
+
+	updateSearchResults = (results) => {
+		console.log(results[0])
+		this.setState({ searchResults: results[0] }, () => {
+			console.log(this.state)
+		})
+	}
+
+	render() {
+	  return (
+	    <div className="App">
+	      <header className="App-header">
+	      	<h1>Objective Playlist</h1>        
+	      </header>
+	{/*      <Search accessToken="balls" />
+	*/}      <SearchDatabase update={this.updateSearchResults} />
+					<hr />
+					<br />
+					<Playlist results={this.state.searchResults} allTracks={this.state.allTracks} />
+	{/*			<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>  */}  
+			</div>
+	  );
+	}
 }
 
 export default App;
