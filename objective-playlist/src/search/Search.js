@@ -20,7 +20,7 @@ class Search extends React.Component {
     e.preventDefault()
     const BASE_URL = 'https://api.spotify.com/v1/search?';
     const FETCH_URL = BASE_URL + 'q=' + this.state.query + '&type=track';
-    var accessToken = 'BQAvEVzf6UkPnhjWO7c9V9lE77tsq4h7LWMmSzyyBEi7rF3wQpdCe5Cooqe8UgRPmqrgbVdyfbu-t4vDAdkpGy2klfW_KyB_E_f7vcK3bKVcw7oXNd6BeRx83KxKbuUUcbekzzN4WtK4GSEMz1A6Mt2q283GO-1RFVPz&refresh_token=AQAsvFo8wL25jkrLZobUzHtVThLlh4maEwq5ndTELeI-kld5PY-5yoHhO-Qzrz4EyD-SnDBq14hIvi6gyuTgmXYWPExJ9cHWzsHQwh4YHkWiayndDmwcrcCThwS35I2xlPzGpQ'
+    var accessToken = 'BQC_RppbQVank8T0MTZ3j7d9Nv9QpT9XKChm81eO0YHxtSdpkBEBxyTHyLOTfIHZXoiBPe9J994loGEr5LynhHx0cois3u2CZ7J1QUI-13zfOdH7QIwAVRWbpsmyK4OVXepq7becwz523a25oLjJOx_4FqCPRAIolR1U&refresh_token=AQC5zT4l0ArRmk7vubdCvVvXmXQmrOPr-VOZzQiLJuCI6uiQqC1vy8Us_pq2xaoLrOoU_gEUrZoh_mgLa9Ll3fg9cuPKb-dg7p5R0NXkvyPbfxb9ixf_37MczQymETN5Hyyzkw'
 
     var myOptions = {
       method: 'GET',
@@ -34,7 +34,6 @@ class Search extends React.Component {
     fetch(FETCH_URL, myOptions)
     .then(response => response.json())
     .then(json => {
-      console.log('FUCK ME', json)
       let tracks = json.tracks.items.map((t, i) => {
         return([t.id, t.album.images[2].url, t.artists[0].name, t.name, t.uri])
       })
@@ -74,7 +73,7 @@ class Search extends React.Component {
         <form className="container" noValidate autoComplete="off" onSubmit={this.handleSubmit}>
           <TextField
             id="filled-search"
-            label="Search by song"
+            label="Seed the database with songs from Spotify"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"

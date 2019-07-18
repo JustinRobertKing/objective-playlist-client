@@ -22,10 +22,16 @@ class ResultBox extends Component {
 			matches = [...this.props.allTracks].map((t, i) => {
 				if (t.analytics.key.$numberDecimal === this.props.results.analytics.key.$numberDecimal && 
 					t.analytics.time_signature.$numberDecimal === this.props.results.analytics.time_signature.$numberDecimal &&
-					t.analytics.mode.$numberDecimal === this.props.results.analytics.mode.$numberDecimal) {
+					t.analytics.mode.$numberDecimal === this.props.results.analytics.mode.$numberDecimal &&
+					(t.analytics.tempo.$numberDecimal <= this.props.results.analytics.tempo.$numberDecimal + 5 ||
+						t.analytics.tempo.$numberDecimal <= this.props.results.analytics.tempo.$numberDecimal - 5)) {
 					console.log('got here')
+					let src = 'https://open.spotify.com/embed/track/' + t.trackId
 					return(
-						<Result trackInfo={t} />
+						<div>
+{/*							<Result trackInfo={t} />
+*/}							<iframe src={src} width="350" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						</div>
 					)
 				} else {
 					return

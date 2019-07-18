@@ -14,7 +14,9 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignSelft: 'center',
     width: '95%',
-    margin: 'auto'
+    margin: 'auto',
+    backgroundColor: '#333333',
+    color: 'lightgrey'
   },
   bullet: {
     display: 'inline-block',
@@ -33,17 +35,21 @@ export default function Playlist(props) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
-  return (
-  	<div>
-	    <Card className={classes.card}>
-	      <CardContent style={{width: '100%'}} >
-	        <Typography variant="h5" component="h2">
-	          Listen to this nonsense:
-	        </Typography>
-	        <hr />
-	        <ResultBox results={props.results} allTracks={props.allTracks} />
-	      </CardContent>
-	    </Card>
-    </div>
-  );
+  if (props.results) {
+	  return (
+	  	<div>
+		    <Card className={classes.card}>
+		      <CardContent style={{width: '100%'}} >
+		        <Typography variant="h5" component="h2">
+		          Listen to this nonsense:
+		        </Typography>
+		        <hr />
+		        <ResultBox results={props.results} allTracks={props.allTracks} />
+		      </CardContent>
+		    </Card>
+	    </div>
+	  );
+  } else {
+  	return(<div></div>)
+  }
 }

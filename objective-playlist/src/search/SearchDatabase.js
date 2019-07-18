@@ -39,6 +39,7 @@ class Search extends React.Component {
           <TextField
             id="filled-search"
             label="Artist"
+            style={{margin: 10}}
             fullWidth
             margin="normal"
             type="search"
@@ -55,6 +56,7 @@ class Search extends React.Component {
           <TextField
             id="filled-search"
             label="Title"
+            style={{margin: 10}}
             fullWidth
             margin="normal"
             type="search"

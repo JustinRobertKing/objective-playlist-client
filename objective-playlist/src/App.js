@@ -36,12 +36,10 @@ class App extends React.Component {
 	      <header className="App-header">
 	      	<h1>Objective Playlist</h1>        
 	      </header>
-	{/*      <Search accessToken="balls" />
-	*/}      <SearchDatabase update={this.updateSearchResults} />
-					<hr />
+{/*	      <Search accessToken="balls" />
+*/}	      <SearchDatabase update={this.updateSearchResults} />
 					<br />
-					<Playlist results={this.state.searchResults} allTracks={this.state.allTracks} />
-	{/*			<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>  */}  
+					<Playlist results={this.state.searchResults} allTracks={this.state.allTracks} />    
 			</div>
 	  );
 	}
